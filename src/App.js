@@ -19,7 +19,6 @@ function App() {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
   };
 
   const ToggleParent = styled.div`

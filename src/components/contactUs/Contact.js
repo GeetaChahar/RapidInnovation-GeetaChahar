@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { Modal, Box, Typography, Button, TextField, Grid } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Grid,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { styled } from "@mui/system";
 
 const Contact = () => {
@@ -29,8 +38,12 @@ const Contact = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
+      <h1>Contact Us</h1>
       <Formik
         initialValues={{
           name: "",
@@ -48,7 +61,13 @@ const Contact = () => {
         }}
       >
         {({ setFieldValue, errors, touched }) => (
-          <Form style={{ padding: "20px", width: "60%" }}>
+          <Form
+            style={{
+              padding: "20px",
+              width: isMobile ? "100%" : "60%",
+              margin: "0 auto",
+            }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Field
